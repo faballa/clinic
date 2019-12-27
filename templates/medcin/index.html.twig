@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+{% block contente %}
+{% block title %}Ajouter un Medcin{% endblock %}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Matricule</th>
+            <th>Prenom</th>
+            <th>Nom</th>
+            <th>Tel</th>
+            <th>DateNaissance</th>
+            <th>Service</th>
+
+        </tr>
+    </thead>
+    <tbody> 
+    {% for medcin in medcin %}
+
+        <tr>
+
+           <td scope="row">{{medcin.Id}}</td>
+           <td>{{medcin.Matricule}}</td> 
+           <td>{{medcin.Prenom}}</td> 
+           <td>{{medcin.Nom}}</td>
+           <td>{{medcin.Tel }}</td>
+           <td>{{medcin.DateNaissance|date('Y-m-d')}}</td>
+           <td>{{medcin.Service.Libelle}}</td>
+            <td> <a name="" id="" class="btn btn-primary" href="{{path('medcin.service.edit',{'id':medcin.id})}}" role="button">Editer</a></td>
+            <td> <a name="" id="" class="btn btn-danger" href="{{path('medcin.service.delete',{'id':medcin.id})}}" role="button"> Supprimer</a>
+
+        </tr>
+         {% endfor %}
+
+    </tbody>
+</table>
+{% endblock %}
